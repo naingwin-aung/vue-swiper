@@ -36,7 +36,7 @@ const closeDialog = (e: MouseEvent) => {
       <X class="w-6 h-6 text-white" />
     </button>
 
-    <div class="w-full max-w-5xl h-[80vh] px-4 flex flex-col gap-4" @click.stop>
+    <div class="w-full max-w-5xl h-[90vh] px-4 flex flex-col gap-4" @click.stop>
       <Galleria
         :value="galleries"
         :numVisible="7"

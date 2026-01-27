@@ -85,3 +85,18 @@ body {
 .swiper-pagination-bullet-active {
   background-color: gray !important;
 }
+
+.p-inputtext.p-component.p-filled.p-datepicker-input {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.p-inputtext.p-component.p-datepicker-input {
+  padding: 0px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.p-datepicker-day-selected {
+  background : oklch(70.5% 0.213 47.604) !important;
+}

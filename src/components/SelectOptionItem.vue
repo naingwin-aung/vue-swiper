@@ -8,8 +8,18 @@ import { ChevronDown, ChevronUp } from "lucide-vue-next";
 import { Plus } from "lucide-vue-next";
 import { Minus } from "lucide-vue-next";
 import SmallImageGallery from "./SmallImageGallery.vue";
+import { DatePicker } from "primevue";
 
 const activeValue = ref(null);
+
+const minDate = ref(new Date("2026-01-27"));
+const maxDate = ref(new Date("2026-03-28"));
+const closingDates = ref([
+  new Date("2026-02-10"),
+  new Date("2026-02-11"),
+  new Date("2026-02-12"),
+]);
+const date = ref(new Date());
 
 const galleries = [
   {
@@ -124,9 +134,17 @@ const galleries = [
                   Please select a participation date
                 </div>
                 <div
-                  class="px-20 py-1.5 border border-orange-500 rounded-lg w-fit"
+                  class="ps-4 py-2 border border-orange-500 rounded-lg w-fit"
                 >
-                  <span class="text-orange-600 text-sm">Select date</span>
+                  <div class="text-orange-600 text-sm mb-0.5">Select date</div>
+                  <DatePicker
+                    v-model="date"
+                    class="w-full text-orange-500"
+                    dateFormat="dd M yy"
+                    :minDate="minDate"
+                    :maxDate="maxDate"
+                    :disabledDates="closingDates"
+                  />
                 </div>
               </div>
 
