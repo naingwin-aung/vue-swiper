@@ -4,8 +4,24 @@ import Container from "./components/Container.vue";
 import Gallery from "./components/Gallery.vue";
 import GalleryModal from "./components/GalleryModal.vue";
 import SelectOptionItem from "./components/SelectOptionItem.vue";
+import PrimeVueGalleryModal from "./components/PrimeVueGalleryModal.vue";
 
 const galleries = [
+  {
+    url: "https://i.pinimg.com/1200x/8d/a2/33/8da23335dace52844ff1840c279c7a14.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/1200x/c9/26/54/c92654f51926c675ea63f5ba4460941c.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/bf/16/7d/bf167d3a3222136882cc9e41ab2ee2f1.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/ba/6d/ae/ba6dae4d15b45507809b8d242a5c1c88.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/3d/e9/9d/3de99dec949b4336e6d0304d1f191459.jpg",
+  },
   {
     url: "https://i.pinimg.com/1200x/8d/a2/33/8da23335dace52844ff1840c279c7a14.jpg",
   },
@@ -60,7 +76,14 @@ const openGallery = (index) => {
       <Gallery :gallery="galleries" @open-gallery="openGallery" />
     </div>
 
-    <GalleryModal
+    <!-- <GalleryModal
+      :galleries="galleries"
+      :isGalleryOpen="isGalleryOpen"
+      :initialSlide="initialSlideNumber"
+      @update:isGalleryOpen="(val) => (isGalleryOpen = val)"
+    /> -->
+
+    <PrimeVueGalleryModal
       :galleries="galleries"
       :isGalleryOpen="isGalleryOpen"
       :initialSlide="initialSlideNumber"
