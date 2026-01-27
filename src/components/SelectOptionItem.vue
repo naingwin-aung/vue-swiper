@@ -139,7 +139,7 @@ const galleries = [
                 <div
                   class="ps-4 py-2 border border-orange-500 rounded-lg w-fit"
                 >
-                  <div class="text-orange-600 text-sm mb-0.5">Select date</div>
+                  <div class="text-xs mb-0.5 text-gray-600">Select date</div>
                   <DatePicker
                     v-model="date"
                     class="w-full text-orange-500"

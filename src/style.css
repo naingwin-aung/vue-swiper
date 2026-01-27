@@ -89,6 +89,8 @@ body {
 .p-inputtext.p-component.p-filled.p-datepicker-input {
   border: none !important;
   box-shadow: none !important;
+  color: oklch(64.6% 0.222 41.116) !important;
+  font-weight: 500 !important;
 }
 
 .p-inputtext.p-component.p-datepicker-input {
