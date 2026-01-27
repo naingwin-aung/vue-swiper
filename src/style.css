@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.custom-swiper-container {
+  position: relative;
+}
+
+.swiper-button-prev-custom,
+.swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  color: black;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+}
+
+.swiper-button-prev-custom {
+  left: -40px; 
+}
+
+.swiper-button-next-custom {
+  right: -40px;
+}
+
+.swiper-button-prev-custom.swiper-button-disabled,
+.swiper-button-next-custom.swiper-button-disabled {
+  opacity: 0;
+}
+
+
+.gallery-swiper-button-prev-custom,
+.gallery-swiper-button-next-custom {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: rgb(130, 130, 130);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.3s;
+
+  &:hover {
+    background-color: rgb(100, 100, 100);
+  }
+}
+
+.gallery-swiper-button-prev-custom {
+  left: -60px; 
+}
+
+.gallery-swiper-button-next-custom {
+  right: -60px;
+}
+
+.gallery-swiper-button-prev-custom.swiper-button-disabled,
+.gallery-swiper-button-next-custom.swiper-button-disabled {
+  opacity: 0.4;
+}
+
+.swiper-pagination {
+  bottom: -1px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: gray !important;
+}
