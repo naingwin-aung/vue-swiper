@@ -50,7 +50,7 @@ const openGallery = (index) => {
 </script>
 
 <template>
-  <Container class-name="mt-10">
+  <Container class-name="mt-10 mb-20">
     <h1 class="text-2xl md:text-3xl font-medium mb-4">
       Bangkok Dinner Cruise white orchid river cruise from Asiatique
     </h1>

@@ -6,6 +6,40 @@ import AccordionContent from "primevue/accordioncontent";
 import { ChevronDown } from "lucide-vue-next";
 import { Plus } from "lucide-vue-next";
 import { Minus } from "lucide-vue-next";
+import SmallImageGallery from "./SmallImageGallery.vue";
+
+const galleries = [
+  {
+    url: "https://i.pinimg.com/1200x/8d/a2/33/8da23335dace52844ff1840c279c7a14.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/1200x/c9/26/54/c92654f51926c675ea63f5ba4460941c.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/bf/16/7d/bf167d3a3222136882cc9e41ab2ee2f1.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/ba/6d/ae/ba6dae4d15b45507809b8d242a5c1c88.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/3d/e9/9d/3de99dec949b4336e6d0304d1f191459.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/1200x/8d/a2/33/8da23335dace52844ff1840c279c7a14.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/1200x/c9/26/54/c92654f51926c675ea63f5ba4460941c.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/bf/16/7d/bf167d3a3222136882cc9e41ab2ee2f1.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/ba/6d/ae/ba6dae4d15b45507809b8d242a5c1c88.jpg",
+  },
+  {
+    url: "https://i.pinimg.com/736x/3d/e9/9d/3de99dec949b4336e6d0304d1f191459.jpg",
+  },
+];
 </script>
 <template>
   <div class="w-full mb-6">
@@ -18,15 +52,9 @@ import { Minus } from "lucide-vue-next";
       <AccordionPanel value="0" class="p-0">
         <AccordionHeader class="p-0">
           <div class="flex flex-col md:flex-row w-full h-auto md:h-52.5">
-            <div
-              class="w-full md:w-1/4 h-62.5 md:h-full bg-gray-200 rounded-xl overflow-hidden"
-              :style="{
-                backgroundImage:
-                  'url(https://i.pinimg.com/736x/3d/87/19/3d8719a98849eb0e20e0ba670ef960ac.jpg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }"
-            ></div>
+            <div class="w-full md:w-1/4 h-62.5 md:h-full">
+              <SmallImageGallery :images="galleries" />
+            </div>
             <div class="w-full md:w-3/4 h-full ps-5">
               <div class="flex items-center justify-between mb-3">
                 <h3
@@ -43,7 +71,7 @@ import { Minus } from "lucide-vue-next";
               </div>
 
               <div
-                class="w-full mb-6 text-left overflow-hidden font-normal line-clamp-3"
+                class="w-full mb-8 text-left overflow-hidden font-normal line-clamp-3"
               >
                 Experience the beauty of the ocean aboard Sea Majesty Boat,
                 where calm waves meet elegant comfort. Enjoy panoramic sea
@@ -82,16 +110,10 @@ import { Minus } from "lucide-vue-next";
             <div class="font-medium underline text-gray-600">Clear all</div>
           </div>
 
-          <div class="flex gap-4">
-            <div
-              class="w-1/3 h-72.5 bg-gray-200 rounded-xl overflow-hidden"
-              :style="{
-                backgroundImage:
-                  'url(https://i.pinimg.com/736x/a2/26/34/a2263434997914cdc5f637395b9b88d7.jpg)',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-              }"
-            ></div>
+          <div class="flex gap-5">
+            <div class="w-1/3 h-72.5 bg-gray-200 rounded-xl overflow-hidden">
+              <SmallImageGallery :images="galleries" />
+            </div>
             <div class="w-2/3">
               <div class="mb-5">
                 <div class="text-gray-700 text-sm mb-2.5">
@@ -181,11 +203,17 @@ import { Minus } from "lucide-vue-next";
               <div class="mb-5">
                 <div class="flex items-center justify-between">
                   <div>
-                    <div class="text-2xl font-medium mb-2 text-black">THB -</div>
-                    <div class="text-xs font-medium text-gray-500">Complete all required fields to continue</div>
+                    <div class="text-2xl font-medium mb-2 text-black">
+                      THB -
+                    </div>
+                    <div class="text-xs font-medium text-gray-500">
+                      Complete all required fields to continue
+                    </div>
                   </div>
                   <div>
-                    <button class="px-5 py-3 text-white bg-orange-500 rounded-lg font-medium hover:bg-orange-600 transition cursor-pointer">
+                    <button
+                      class="px-5 py-3 text-white bg-orange-500 rounded-lg font-medium hover:bg-orange-600 transition cursor-pointer"
+                    >
                       Book now
                     </button>
                   </div>
