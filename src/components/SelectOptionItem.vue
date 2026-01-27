@@ -1,12 +1,15 @@
 <script setup>
+import { ref } from "vue";
 import Accordion from "primevue/accordion";
 import AccordionPanel from "primevue/accordionpanel";
 import AccordionHeader from "primevue/accordionheader";
 import AccordionContent from "primevue/accordioncontent";
-import { ChevronDown } from "lucide-vue-next";
+import { ChevronDown, ChevronUp } from "lucide-vue-next";
 import { Plus } from "lucide-vue-next";
 import { Minus } from "lucide-vue-next";
 import SmallImageGallery from "./SmallImageGallery.vue";
+
+const activeValue = ref(null);
 
 const galleries = [
   {
@@ -44,12 +47,12 @@ const galleries = [
 <template>
   <div class="w-full mb-6">
     <Accordion
-      value="1"
+      v-model:value="activeValue"
       class="w-full border border-gray-200 rounded-2xl overflow-hidden cursor-pointer hover:shadow-md transition-shadow duration-300 p-0"
       expandIcon="pi pi-plus"
       collapseIcon="pi pi-minus"
     >
-      <AccordionPanel value="0" class="p-0">
+      <AccordionPanel value="item-1" class="p-0">
         <AccordionHeader class="p-0">
           <div class="flex flex-col md:flex-row w-full h-auto md:h-52.5">
             <div class="w-full md:w-1/4 h-62.5 md:h-full">
@@ -66,7 +69,8 @@ const galleries = [
                 <div
                   class="p-1 rounded-full hover:bg-gray-100 transition cursor-pointer flex items-center justify-center"
                 >
-                  <ChevronDown size="30" />
+                  <ChevronUp v-if="activeValue === 'item-1'" size="30" />
+                  <ChevronDown v-else size="30" />
                 </div>
               </div>
 

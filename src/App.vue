@@ -118,6 +118,7 @@ const openGallery = (index) => {
     <div class="mb-6">
       <h3 class="text-xl md:text-2xl font-medium mb-4">Select options</h3>
       <SelectOptionItem />
+      <SelectOptionItem />
     </div>
   </Container>
 </template>
