@@ -9,6 +9,7 @@ import { Plus } from "lucide-vue-next";
 import { Minus } from "lucide-vue-next";
 import SmallImageGallery from "./SmallImageGallery.vue";
 import { DatePicker } from "primevue";
+import moment from "moment";
 
 const activeValue = ref(null);
 
@@ -18,6 +19,7 @@ const closingDates = ref([
   new Date("2026-02-10"),
   new Date("2026-02-11"),
   new Date("2026-02-12"),
+  new Date("2026-02-15"),
 ]);
 const date = ref(new Date());
 
@@ -132,6 +134,7 @@ const galleries = [
               <div class="mb-5">
                 <div class="text-gray-700 text-sm mb-2.5">
                   Please select a participation date
+                  <!-- {{ moment(date).format("yyyy-MM-DD") }} -->
                 </div>
                 <div
                   class="ps-4 py-2 border border-orange-500 rounded-lg w-fit"
