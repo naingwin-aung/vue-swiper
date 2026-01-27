@@ -73,7 +73,7 @@ const openGallery = (index) => {
     </div>
 
     <div class="mb-6">
-      <Gallery :gallery="galleries" @open-gallery="openGallery" />
+      <Gallery :galleries="galleries" @open-gallery="openGallery" />
     </div>
 
     <!-- <GalleryModal

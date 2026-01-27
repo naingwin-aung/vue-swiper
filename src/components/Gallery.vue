@@ -2,7 +2,7 @@
 import { computed } from 'vue';
 
 const props = defineProps({
-    gallery: {
+    galleries: {
         type: Array,
         required: true
     }
@@ -13,17 +13,17 @@ const isMobile = computed(() => {
 });
 
 const leftLayoutClass = computed(() => {
-    return props.gallery.length === 1 ? 'w-full' : 'w-1/2';
+    return props.galleries.length === 1 ? 'w-full' : 'w-1/2';
 });
 
 const rightLayoutClass = computed(() => {
     if (isMobile.value) {
         return 'grid-rows-2';
     }
-    if (props.gallery.length === 2 || props.gallery.length === 3) {
+    if (props.galleries.length === 2 || props.galleries.length === 3) {
         return 'grid-cols-1';
     }
-    if (props.gallery.length === 4) {
+    if (props.galleries.length === 4) {
         return 'grid-cols-2';
     }
     return 'grid-cols-2 grid-rows-2';
@@ -45,16 +45,16 @@ const openGallery = (index) => {
             >
                 <div
                     class="w-full h-full bg-cover bg-center"
-                    :style="{ backgroundImage: `url(${gallery[0]?.url})` }"
+                    :style="{ backgroundImage: `url(${galleries[0]?.url})` }"
                 ></div>
             </div>
 
-            <div v-if="gallery.length > 1" class="w-1/2 h-full relative overflow-hidden">
+            <div v-if="galleries.length > 1" class="w-1/2 h-full relative overflow-hidden">
                 <div :class="`w-full h-full grid ${rightLayoutClass} gap-2`">
                     <div
-                        v-for="(img, index) in gallery.slice(1, isMobile ? 3 : 5)"
+                        v-for="(img, index) in galleries.slice(1, isMobile ? 3 : 5)"
                         :key="index"
-                        :class="`w-full h-full bg-cover bg-center overflow-hidden cursor-pointer ${index === 0 && gallery.length === 4 ? 'col-span-2' : ''}`"
+                        :class="`w-full h-full bg-cover bg-center overflow-hidden cursor-pointer ${index === 0 && galleries.length === 4 ? 'col-span-2' : ''}`"
                         :style="{ backgroundImage: `url(${img.url})` }"
                         @click="openGallery(index + 1)"
                     ></div>
@@ -62,7 +62,7 @@ const openGallery = (index) => {
 
                 <!-- Image counter overlay -->
                 <div class="absolute top-4 right-4 bg-black/60 backdrop-blur-xs px-3 py-1.5 rounded-lg text-white text-sm font-medium">
-                    {{ gallery.length }}
+                    {{ galleries.length }}
                 </div>
 
                 <!-- Gallery button overlay -->
