@@ -3,14 +3,11 @@ import { ref, computed, watch } from "vue";
 import moment from "moment";
 import { ChevronLeft, ChevronRight, Calendar } from "lucide-vue-next";
 
-// Current selected month
 const currentDate = ref(moment());
 
-// Bookings data fetched from API
 const bookings = ref([]);
 const isLoading = ref(false);
 
-// Mock API fetch function - replace with your actual API call
 const fetchBookingsForMonth = async (year, month) => {
   isLoading.value = true;
 
@@ -139,7 +136,7 @@ const goToToday = () => {
 const selectedDay = ref(null);
 
 const selectDay = (day) => {
-  if (day.bookings.length > 0) {
+  if (day.bookings?.length > 0) {
     selectedDay.value = day;
   }
 };
@@ -228,7 +225,7 @@ const getBookingCountClass = (count) => {
           :class="[
             day.isCurrentMonth ? 'bg-white' : 'bg-gray-50',
             day.isToday ? 'ring-2 ring-inset ring-blue-500' : '',
-            day.bookings.length > 0 ? 'cursor-pointer hover:bg-blue-50' : '',
+            day.bookings?.length > 0 ? 'cursor-pointer hover:bg-blue-50' : '',
           ]"
         >
           <div class="flex items-start justify-between">
@@ -243,30 +240,30 @@ const getBookingCountClass = (count) => {
             </span>
 
             <span
-              v-if="day.bookings.length > 0"
+              v-if="day.bookings?.length > 0"
               class="inline-flex items-center justify-center min-w-5 h-5 px-1.5 text-xs font-bold rounded-full"
-              :class="getBookingCountClass(day.bookings.length)"
+              :class="getBookingCountClass(day.bookings?.length)"
             >
-              {{ day.bookings.length }}
+              {{ day.bookings?.length }}
             </span>
           </div>
 
           <div
-            v-if="day.bookings.length > 0 && day.isCurrentMonth"
+            v-if="day.bookings?.length > 0 && day.isCurrentMonth"
             class="mt-1 space-y-1"
           >
             <div
-              v-for="booking in day.bookings.slice(0, 2)"
+              v-for="booking in day.bookings?.slice(0, 2)"
               :key="booking.id"
               class="text-xs px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded truncate"
             >
               {{ booking.title }}
             </div>
             <div
-              v-if="day.bookings.length > 2"
+              v-if="day.bookings?.length > 2"
               class="text-xs text-gray-500 pl-1"
             >
-              +{{ day.bookings.length - 2 }} more
+              +{{ day.bookings?.length - 2 }} more
             </div>
           </div>
         </div>
@@ -308,8 +305,8 @@ const getBookingCountClass = (count) => {
               </button>
             </div>
             <p class="text-blue-100 text-sm mt-1">
-              {{ selectedDay.bookings.length }} booking{{
-                selectedDay.bookings.length !== 1 ? "s" : ""
+              {{ selectedday.bookings?.length }} booking{{
+                selectedday.bookings?.length !== 1 ? "s" : ""
               }}
             </p>
           </div>
