@@ -94,13 +94,11 @@ const fetchBookingsForMonth = async (year, month) => {
   isLoading.value = false;
 };
 
-// Get bookings count for a specific date
 const getBookingsForDate = (date) => {
   const dateStr = date.format("YYYY-MM-DD");
   return bookings.value.filter((booking) => booking.date === dateStr);
 };
 
-// Calendar days computation
 const calendarDays = computed(() => {
   const startOfMonth = currentDate.value.clone().startOf("month");
   const endOfMonth = currentDate.value.clone().endOf("month");
@@ -168,7 +166,7 @@ const getBookingCountClass = (count) => {
 </script>
 
 <template>
-  <div class="max-w-4xl mx-auto p-4">
+  <div class="max-w-5xl mx-auto p-4">
     <div class="bg-white rounded-xl shadow-lg overflow-hidden">
       <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
         <div class="flex items-center justify-between">
@@ -226,7 +224,7 @@ const getBookingCountClass = (count) => {
           v-for="(day, index) in calendarDays"
           :key="index"
           @click="selectDay(day)"
-          class="min-h-24 p-2 border-b border-r border-gray-100 transition-colors"
+          class="min-h-40 p-2 border-b border-r border-gray-100 transition-colors"
           :class="[
             day.isCurrentMonth ? 'bg-white' : 'bg-gray-50',
             day.isToday ? 'ring-2 ring-inset ring-blue-500' : '',
@@ -316,7 +314,7 @@ const getBookingCountClass = (count) => {
             </p>
           </div>
 
-          <div class="p-4 overflow-y-auto max-h-96">
+          <div class="p-4 overflow-y-scroll max-h-[calc(80vh-72px)]">
             <div class="space-y-3">
               <div
                 v-for="booking in selectedDay.bookings"
@@ -328,7 +326,42 @@ const getBookingCountClass = (count) => {
                   Guest: {{ booking.guest }}
                 </p>
               </div>
+
+              <div
+                v-for="booking in selectedDay.bookings"
+                :key="booking.id"
+                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+              >
+                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+                <p class="text-sm text-gray-600 mt-1">
+                  Guest: {{ booking.guest }}
+                </p>
+              </div>
+
+              <div
+                v-for="booking in selectedDay.bookings"
+                :key="booking.id"
+                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+              >
+                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+                <p class="text-sm text-gray-600 mt-1">
+                  Guest: {{ booking.guest }}
+                </p>
+              </div>
+
+              <div
+                v-for="booking in selectedDay.bookings"
+                :key="booking.id"
+                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+              >
+                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+                <p class="text-sm text-gray-600 mt-1">
+                  Guest: {{ booking.guest }}
+                </p>
+              </div>
             </div>
+
+            <br />
           </div>
         </div>
       </div>
