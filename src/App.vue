@@ -76,22 +76,22 @@ const openGallery = (index) => {
       <Gallery :galleries="galleries" @open-gallery="openGallery" />
     </div>
 
-    <!-- <GalleryModal
-      :galleries="galleries"
-      :isGalleryOpen="isGalleryOpen"
-      :initialSlide="initialSlideNumber"
-      @update:isGalleryOpen="(val) => (isGalleryOpen = val)"
-    /> -->
-
-    <PrimeVueGalleryModal
+    <GalleryModal
       :galleries="galleries"
       :isGalleryOpen="isGalleryOpen"
       :initialSlide="initialSlideNumber"
       @update:isGalleryOpen="(val) => (isGalleryOpen = val)"
     />
 
-    <div class="flex gap-5 mb-7">
-      <p class="w-3/4 p-4 border border-gray-200 rounded-xl">
+    <!-- <PrimeVueGalleryModal
+      :galleries="galleries"
+      :isGalleryOpen="isGalleryOpen"
+      :initialSlide="initialSlideNumber"
+      @update:isGalleryOpen="(val) => (isGalleryOpen = val)"
+    /> -->
+
+    <div class="flex flex-col md:flex-row gap-5 mb-7">
+      <p class="w-full md:w-3/4 p-4 border border-gray-200 rounded-xl">
         Cruise along the Chao Phraya River and enjoy a delicious dinner while
         taking in the beautiful views of Bangkok's skyline. The White Orchid
         River Cruise offers a unique dining experience with traditional Thai
@@ -102,7 +102,7 @@ const openGallery = (index) => {
         is a perfect way to experience the beauty of Bangkok from a different
         perspective.
       </p>
-      <div class="w-1/4 h-30 border border-gray-200 rounded-xl px-5 pt-4">
+      <div class="w-xs md:w-1/4 h-30 border border-gray-200 rounded-xl px-5 pt-4">
         <div class="text-lg font-medium">
           <span class="text-sm text-gray-600 me-1"> From </span>
           <span>THB 399</span>

@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed } from "vue";
 import PrimeVueGalleryModal from "./PrimeVueGalleryModal.vue";
+import GalleryModal from "./GalleryModal.vue";
 
 const props = defineProps({
   images: {
@@ -46,11 +47,18 @@ const imageClass = computed(() => {
       </div>
     </div>
 
-    <PrimeVueGalleryModal
+    <!-- <PrimeVueGalleryModal
       :galleries="images"
       :isGalleryOpen="isGalleryOpen"
       @update:isGalleryOpen="isGalleryOpen = $event"
       :initialSlide="initialSlide"
+    /> -->
+
+    <GalleryModal
+      :galleries="images"
+      :isGalleryOpen="isGalleryOpen"
+      :initialSlide="initialSlide"
+      @update:isGalleryOpen="isGalleryOpen = $event"
     />
   </div>
 </template>
