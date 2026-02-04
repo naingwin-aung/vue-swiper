@@ -305,8 +305,8 @@ const getBookingCountClass = (count) => {
               </button>
             </div>
             <p class="text-blue-100 text-sm mt-1">
-              {{ selectedday.bookings?.length }} booking{{
-                selectedday.bookings?.length !== 1 ? "s" : ""
+              {{ selectedDay.bookings?.length }} booking{{
+                selectedDay.bookings?.length !== 1 ? "s" : ""
               }}
             </p>
           </div>
