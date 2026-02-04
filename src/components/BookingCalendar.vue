@@ -270,99 +270,97 @@ const getBookingCountClass = (count) => {
       </div>
     </div>
 
-    <Transition name="modal">
+    <div
+      v-if="selectedDay"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4"
+    >
+      <div class="absolute inset-0 bg-black/50" @click="closeDetail"></div>
+
       <div
-        v-if="selectedDay"
-        class="fixed inset-0 z-50 flex items-center justify-center p-4"
+        class="relative bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-hidden"
       >
-        <div class="absolute inset-0 bg-black/50" @click="closeDetail"></div>
-
-        <div
-          class="relative bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[80vh] overflow-hidden"
-        >
-          <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
-            <div class="flex items-center justify-between">
-              <h3 class="text-lg font-bold text-white">
-                {{ selectedDay.date.format("dddd, MMMM D, YYYY") }}
-              </h3>
-              <button
-                @click="closeDetail"
-                class="p-1 text-white hover:bg-white/20 rounded-lg transition-colors"
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-bold text-white">
+              {{ selectedDay.date.format("dddd, MMMM D, YYYY") }}
+            </h3>
+            <button
+              @click="closeDetail"
+              class="p-1 text-white hover:bg-white/20 rounded-lg transition-colors"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
               >
-                <svg
-                  class="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
-            </div>
-            <p class="text-blue-100 text-sm mt-1">
-              {{ selectedDay.bookings?.length }} booking{{
-                selectedDay.bookings?.length !== 1 ? "s" : ""
-              }}
-            </p>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
           </div>
+          <p class="text-blue-100 text-sm mt-1">
+            {{ selectedDay.bookings?.length }} booking{{
+              selectedDay.bookings?.length !== 1 ? "s" : ""
+            }}
+          </p>
+        </div>
 
-          <div class="p-4 overflow-y-scroll max-h-[calc(80vh-72px)]">
-            <div class="space-y-3">
-              <div
-                v-for="booking in selectedDay.bookings"
-                :key="booking.id"
-                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-              >
-                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-                <p class="text-sm text-gray-600 mt-1">
-                  Guest: {{ booking.guest }}
-                </p>
-              </div>
-
-              <div
-                v-for="booking in selectedDay.bookings"
-                :key="booking.id"
-                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-              >
-                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-                <p class="text-sm text-gray-600 mt-1">
-                  Guest: {{ booking.guest }}
-                </p>
-              </div>
-
-              <div
-                v-for="booking in selectedDay.bookings"
-                :key="booking.id"
-                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-              >
-                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-                <p class="text-sm text-gray-600 mt-1">
-                  Guest: {{ booking.guest }}
-                </p>
-              </div>
-
-              <div
-                v-for="booking in selectedDay.bookings"
-                :key="booking.id"
-                class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-              >
-                <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-                <p class="text-sm text-gray-600 mt-1">
-                  Guest: {{ booking.guest }}
-                </p>
-              </div>
+        <div class="p-4 overflow-y-scroll max-h-[calc(80vh-72px)]">
+          <div class="space-y-3">
+            <div
+              v-for="booking in selectedDay.bookings"
+              :key="booking.id"
+              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+            >
+              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Guest: {{ booking.guest }}
+              </p>
             </div>
 
-            <br />
+            <div
+              v-for="booking in selectedDay.bookings"
+              :key="booking.id"
+              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+            >
+              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Guest: {{ booking.guest }}
+              </p>
+            </div>
+
+            <div
+              v-for="booking in selectedDay.bookings"
+              :key="booking.id"
+              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+            >
+              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Guest: {{ booking.guest }}
+              </p>
+            </div>
+
+            <div
+              v-for="booking in selectedDay.bookings"
+              :key="booking.id"
+              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
+            >
+              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
+              <p class="text-sm text-gray-600 mt-1">
+                Guest: {{ booking.guest }}
+              </p>
+            </div>
           </div>
+
+          <br />
         </div>
       </div>
-    </Transition>
+    </div>
   </div>
 </template>
 
