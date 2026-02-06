@@ -11,83 +11,60 @@ const isLoading = ref(false);
 const fetchBookingsForMonth = async (year, month) => {
   isLoading.value = true;
 
-  // Simulate API delay
   await new Promise((resolve) => setTimeout(resolve, 200));
 
-  // Mock data - replace with actual API call
-  // Example: const response = await fetch(`/api/bookings?year=${year}&month=${month}`);
-  // bookings.value = await response.json();
+  const response = await fetch(`http://localhost:8000/api/bookings-calendar/7?year=${year}&month=${month}`);
+  bookings.value = await response.json();
 
-  const mockBookings = [
-    {
-      id: 1,
-      date: `${year}-${String(month).padStart(2, "0")}-05`,
-      title: "Room A Booking",
-      guest: "John Doe",
-    },
-    {
-      id: 2,
-      date: `${year}-${String(month).padStart(2, "0")}-05`,
-      title: "Room B Booking",
-      guest: "Jane Smith",
-    },
-    {
-      id: 3,
-      date: `${year}-${String(month).padStart(2, "0")}-05`,
-      title: "Room C Booking",
-      guest: "Bob Wilson",
-    },
-    {
-      id: 4,
-      date: `${year}-${String(month).padStart(2, "0")}-12`,
-      title: "Conference Room",
-      guest: "Alice Brown",
-    },
-    {
-      id: 5,
-      date: `${year}-${String(month).padStart(2, "0")}-12`,
-      title: "Suite Booking",
-      guest: "Charlie Davis",
-    },
-    {
-      id: 6,
-      date: `${year}-${String(month).padStart(2, "0")}-18`,
-      title: "Deluxe Room",
-      guest: "Eve Johnson",
-    },
-    {
-      id: 7,
-      date: `${year}-${String(month).padStart(2, "0")}-22`,
-      title: "Standard Room",
-      guest: "Frank Miller",
-    },
-    {
-      id: 8,
-      date: `${year}-${String(month).padStart(2, "0")}-22`,
-      title: "Twin Room",
-      guest: "Grace Lee",
-    },
-    {
-      id: 9,
-      date: `${year}-${String(month).padStart(2, "0")}-22`,
-      title: "Family Suite",
-      guest: "Henry Wang",
-    },
-    {
-      id: 10,
-      date: `${year}-${String(month).padStart(2, "0")}-22`,
-      title: "Penthouse",
-      guest: "Ivy Chen",
-    },
-    {
-      id: 11,
-      date: `${year}-${String(month).padStart(2, "0")}-28`,
-      title: "Beach Villa",
-      guest: "Jack Taylor",
-    },
-  ];
+  // const mockBookings = [
+  //   {
+  //     id: 1,
+  //     date: `${year}-${String(month).padStart(2, "0")}-05`,
+  //   },
+  //   {
+  //     id: 2,
+  //     date: `${year}-${String(month).padStart(2, "0")}-05`,
+  //   },
+  //   {
+  //     id: 3,
+  //     date: `${year}-${String(month).padStart(2, "0")}-05`,
+  //   },
+  //   {
+  //     id: 4,
+  //     date: `${year}-${String(month).padStart(2, "0")}-12`,
+  //   },
+  //   {
+  //     id: 5,
+  //     date: `${year}-${String(month).padStart(2, "0")}-12`,
+  //   },
+  //   {
+  //     id: 6,
+  //     date: `${year}-${String(month).padStart(2, "0")}-18`,
+  //   },
+  //   {
+  //     id: 7,
+  //     date: `${year}-${String(month).padStart(2, "0")}-22`,
+  //   },
+  //   {
+  //     id: 8,
+  //     date: `${year}-${String(month).padStart(2, "0")}-22`,
+  //   },
+  //   {
+  //     id: 9,
+  //     date: `${year}-${String(month).padStart(2, "0")}-22`,
+  //   },
+  //   {
+  //     id: 10,
+  //     date: `${year}-${String(month).padStart(2, "0")}-22`,
+  //   },
+  //   {
+  //     id: 11,
+  //     date: `${year}-${String(month).padStart(2, "0")}-28`,
+  //   },
+  // ];
 
-  bookings.value = mockBookings;
+  // bookings.value = mockBookings;
+  bookings.value = bookings.value.data.data;
   isLoading.value = false;
 };
 
@@ -257,7 +234,7 @@ const getBookingCountClass = (count) => {
               :key="booking.id"
               class="text-xs px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded truncate"
             >
-              {{ booking.title }}
+                Available Seats : {{ booking.available_seats }}
             </div>
             <div
               v-if="day.bookings?.length > 2"
@@ -317,43 +294,9 @@ const getBookingCountClass = (count) => {
               :key="booking.id"
               class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
             >
-              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-              <p class="text-sm text-gray-600 mt-1">
-                Guest: {{ booking.guest }}
-              </p>
-            </div>
-
-            <div
-              v-for="booking in selectedDay.bookings"
-              :key="booking.id"
-              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-            >
-              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-              <p class="text-sm text-gray-600 mt-1">
-                Guest: {{ booking.guest }}
-              </p>
-            </div>
-
-            <div
-              v-for="booking in selectedDay.bookings"
-              :key="booking.id"
-              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-            >
-              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-              <p class="text-sm text-gray-600 mt-1">
-                Guest: {{ booking.guest }}
-              </p>
-            </div>
-
-            <div
-              v-for="booking in selectedDay.bookings"
-              :key="booking.id"
-              class="p-4 bg-gray-50 rounded-lg border border-gray-100 hover:border-blue-200 transition-colors"
-            >
-              <h4 class="font-semibold text-gray-800">{{ booking.title }}</h4>
-              <p class="text-sm text-gray-600 mt-1">
-                Guest: {{ booking.guest }}
-              </p>
+              <h4 class="font-semibold text-gray-800">
+                  Available Seats : {{ booking.available_seats }}
+              </h4>
             </div>
           </div>
 
